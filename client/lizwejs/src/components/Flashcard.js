@@ -52,7 +52,7 @@ export default function Flashcard() {
 
             return(
               
-                  <div key={index} className="container border-2 absolute left-2/4 -translate-x-1/2 top-40 z-100">
+                  <div key={index} className="container border-2 absolute left-2/4 -translate-x-1/2 top-40 z-100 font-nunito">
         <div onClick={flipCard} style={isFlipped.styles} className="card">
           <div className="question">
           <h3>Q{index+1}. </h3>
@@ -68,6 +68,12 @@ export default function Flashcard() {
           { <p>{item.answer}</p>}
           </div>
         </div>
+        <div className="w-[500px] flex flex-col items-left mt-16"> {/*Comment section*/}
+    <h2 className="font-nunito text-2xl text-left">Comments</h2>
+    <hr />
+        <Comments id={index} item={item}/>
+    
+    </div>
       
     {/* <div className="nav-buttons">
     <div name="prev" className="prev-button text-gray-300 border-orange-500 hover:text-orange-500" onClick={setShowItem}><FontAwesomeIcon name="prev" className="w-full bg-none" icon={faArrowCircleRight} size="3x"/> </div>
@@ -129,11 +135,7 @@ export default function Flashcard() {
     <div className="font-nunito text-3xl text-center mt-10">Flashcards Deck</div>
     <div className="invisible"><Sidebar/></div>
     <div>{setQuizItems[count]}</div>
-    <div className="w-96 flex flex-col items-center left-2/4"> {/*Comment section*/}
-    <h2 className="font-nunito text-2xl text-left mt-96">Comments</h2>
-    <hr />
-    <Comments/>
-    </div>
+    
     </>
   );
         }

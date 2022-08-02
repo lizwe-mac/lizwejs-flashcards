@@ -5,31 +5,60 @@ import node from "../assets/node.png";
 import html from "../assets/html.png";
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import { useState } from "react";
 
 const Home = () => {
+  const [greeting, setGreeting] = useState('Hello')
+  const constant = 0
+  const greetings = ['Hello', 'Sawubona', 'Howzit', 'Thobela', 'Hola']
+  // function hello(){
+  //   while(constant===1){
+  //     greetings.forEach(element => {
+  //       setTimeout(()=>{
+  //         setGreeting(element)
+  //       }, 2000)
+  //     })
+  //   }
+  // }
+  // hello()
   return (
     <>
-      <h1 className="font-nunito text-4xl text-center mt-16">Hello</h1>
+      <div className="flex flex-col item-left gap-5 m-5">
+      <h1 className="font-nunito text-orange-500 text-4xl text-left mt-16">{greeting}</h1>
+      <h1 className="font-nunito text-6xl text-left">Community Learning Platform</h1>
+      <Link to="/signup">
+      <button className="bg-orange-500 w-32 text-white h-12 rounded-sm text-lg font-nunito">Free Sign up</button>
+      </Link>
+      </div>
       <Search />
-      <div className="grid grid-cols-2 border-4 justify-center items-center mt-20 gap-10 md:grid-cols-4">
-        <Link to="/javascript">
-          <div className="border-2 flex flex-col items-center w-6/12 hover:border-orange-600">
+      {/* <div className="grid grid-cols-2 border-4 justify-center items-center mt-20 gap-10 md:grid-cols-4"> */}
+      <div className="flex flex-col gap-5 mt-20 items-center md:flex-row md:items-center md:justify-evenly">
+        <Link className="border-2 items-center rounded-sm p-1 border-yellow-300 hover:border-yellow-600" to="/javascript">
+          <div className="border-2 flex flex-col items-center hover:border-orange-600">
             <img src={js} alt="" />{" "}
-            <h3 className="text-center text-2xl pt-4 font-nunito">JavaScript</h3>
+            <h3 className="text-center font-semibold text-xl pt-4 font-nunito">
+              JavaScript
+            </h3>
           </div>
         </Link>
-        <div className="border-2 flex flex-col items-center w-6/12 hover:border-orange-600">
-          <img src={css} alt="" />{" "}
-          <h3 className="text-center text-2xl pt-4 font-nunito">CSS</h3>
-        </div>
-        <div className="border-2 flex flex-col items-center w-6/12 hover:border-orange-600">
-          <img src={node} alt="" />{" "}
-          <h3 className="text-center text-2xl pt-4 font-nunito">NodeJS</h3>
-        </div>
-        <div className="border-2 flex flex-col items-center w-6/12 hover:border-orange-600">
-          <img src={html} alt="" />{" "}
-          <h3 className="text-center text-2xl pt-4 font-nunito">HTML</h3>
-        </div>
+        <Link className="border-2 items-center rounded-sm p-1 border-blue-400" to="">
+          <div className="border-2 flex flex-col items-center hover:border-orange-600">
+            <img src={css} alt="" />{" "}
+            <h3 className="text-center font-semibold text-xl pt-4 font-nunito">CSS</h3>
+          </div>
+        </Link>
+        <Link className="border-2 items-center rounded-sm p-1 border-green-400" to="">
+          <div className="border-2 flex flex-col items-center hover:border-orange-600">
+            <img src={node} alt="" />{" "}
+            <h3 className="text-center font-semibold text-xl pt-4 font-nunito">NodeJS</h3>
+          </div>
+        </Link>
+        <Link className="border-2 items-center border-orange-400 rounded-sm p-1" to="">
+          <div className="flex flex-col items-center hover:border-orange-600">
+            <img src={html} alt="" />{" "}
+            <h3 className="text-center font-semibold text-xl pt-4 font-nunito">HTML</h3>
+          </div>
+        </Link>
       </div>
     </>
   );

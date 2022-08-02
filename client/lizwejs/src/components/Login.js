@@ -23,7 +23,7 @@ const Login = () => {
     }
   };
   return (
-    <div className="max-w-[800px] min-w-[400px] p-5 absolute left-2/4 -translate-x-2/4 top-2/4 -translate-y-2/4 flex flex-col gap-2 border-[1px] border-orange-500 rounded-md">
+    <div className="max-w-[800px] min-w-[400px] p-5 absolute left-2/4 -translate-x-2/4 top-1/4 -translate-y-1/4 flex flex-col gap-2 border-[1px] border-orange-500 rounded-md">
       <h2 className="text-orange-500 text-lg font-nunito">
         Log in to your account.
       </h2>

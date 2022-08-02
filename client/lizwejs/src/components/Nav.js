@@ -19,7 +19,7 @@ const Nav = () => {
     }
   }
   return (
-    <nav className='flex items-center border-2 m-0 pl-10 pr-10 pt-2 pb-2 w-full sticky left-0 top-0 bg-white'>
+    <nav className='flex items-center border-b-2 border-orange-200 m-0 pl-10 pr-10 pt-2 pb-2 w-full sticky left-0 top-0 bg-white'>
         <Link className='mr-auto' to="/"><div className='text-5xl mr-auto font-nunito'>lizwe<span className='text-orange-600'>js</span></div></Link>
         {/* <FontAwesomeIcon icon={faMagnifyingGlass}/> */}
         {/* <p className='text-orange-600 mr-2 font-nunito'>{user.email}</p> */}
