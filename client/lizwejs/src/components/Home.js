@@ -8,29 +8,38 @@ import Search from "./Search";
 import { useState } from "react";
 
 const Home = () => {
-  const [greeting, setGreeting] = useState('Hello')
-  const constant = 0
   const greetings = ['Hello', 'Sawubona', 'Howzit', 'Thobela', 'Hola']
-  // function hello(){
-  //   while(constant===1){
-  //     greetings.forEach(element => {
-  //       setTimeout(()=>{
-  //         setGreeting(element)
-  //       }, 2000)
-  //     })
-  //   }
-  // }
+  let [greeting, setGreeting] = useState(greetings[0])
+  let num = 0
+  // let greeting = 'Greetings'
+  // window.setInterval(
+  //   function(){
+  //       greetings.forEach(element => {
+  //         // console.log(element)
+  //         setTimeout(()=>{
+  //           setGreeting(element)
+  //         }, 2000)
+  //       })
+  //   }, 2000
+  // )
   // hello()
+//   window.setInterval(()=>{ // 4
+//     num++; // 5
+//     if(num > greetings.length) num = 0; // 6
+//     // console.log(num)
+//     setGreeting(prev => greetings[num]); // 7
+//  }, 5000)
+
   return (
-    <>
-      <div className="flex flex-col item-left gap-5 m-5">
-      <h1 className="font-nunito text-orange-500 text-4xl text-left mt-16">{greeting}</h1>
-      <h1 className="font-nunito text-6xl text-left">Community Learning Platform</h1>
+    <div className="bg-gradient-to-l from-[#ffafbd] to-[#ffc3a0] h-full">
+      <div className="flex flex-col item-left gap-5 m-5 border-[4px] border-white p-5 rounded-md">
+      <h1 className="font-nunito text-orange-500 text-4xl text-left">{greeting}</h1>
+      <h1 className="font-nunito text-6xl text-left">A Free Community Learning Platform</h1>
+      <p></p>
       <Link to="/signup">
-      <button className="bg-orange-500 w-32 text-white h-12 rounded-sm text-lg font-nunito">Free Sign up</button>
+      <button className="bg-orange-500 w-32 text-white h-12 rounded-sm text-lg font-nunito">SIGN UP</button>
       </Link>
       </div>
-      <Search />
       {/* <div className="grid grid-cols-2 border-4 justify-center items-center mt-20 gap-10 md:grid-cols-4"> */}
       <div className="flex flex-col gap-5 mt-20 items-center md:flex-row md:items-center md:justify-evenly">
         <Link className="border-2 items-center rounded-sm p-1 border-yellow-300 hover:border-yellow-600" to="/javascript">
@@ -60,7 +69,9 @@ const Home = () => {
           </div>
         </Link>
       </div>
-    </>
+      <Search />
+
+    </div>
   );
 };
 

@@ -7,6 +7,9 @@ import Comments from "./Comments";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleLeft} from '@fortawesome/free-solid-svg-icons'
 import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons'
+import { faFrown} from '@fortawesome/free-solid-svg-icons'
+import {Online, Offline} from 'react-detect-offline'
+import { useOnlineStatus } from "../context/UseOnlineStatus";
 
 export default function Flashcard() {
   //Show and hide button
@@ -20,8 +23,38 @@ export default function Flashcard() {
   const [count, setCount] = useState(0)
   const [style, setStyle] = React.useState({flipped: false, styles:{}})
   const [showItems,  setShowItems] = useState('')
+  const [isOnliney, setIsLoading] = useState(useOnlineStatus())
+
+  function getRandomString () {
+    return Math.random().toString(36).substring(2, 15)
+  }
+  
+  async function isOnline () {
+    if (!window.navigator.onLine) return false
+  
+    // avoid CORS errors with a request to your own origin
+    const url = new URL(window.location.origin)
+  
+    // random value to prevent cached responses
+    url.searchParams.set('rand', getRandomString())
+  
+    try {
+      const response = await fetch(
+        url.toString(),
+        { method: 'HEAD' },
+      )
+  
+      return response.ok
+    } catch {
+      return false
+    }
+  }  
  
         useEffect(() => {
+          if (!window.navigator.onLine){
+            setIsLoading(false)
+            return
+          }else{
             fetch("http://localhost:3005")
                 .then((res) => res.json())
                 .then(
@@ -37,15 +70,27 @@ export default function Flashcard() {
                         setError(error);
                     }
                 );
+          }
+            
         }, []);
         // console.log("items:", items[0].flashcards)
-        
+        window.addEventListener('online', () => console.log('online'))
+window.addEventListener('offline', () => console.log('offline'))
 
-        if (error) {
+        console.log("is loading:", isOnline())
+        console.log("Online:", window.navigator.onLine)
+        if (!isOnline()) {
+          return <div className=" text-orange-500 flex flex-col gap-3 items-center absolute left-2/4 -translate-x-1/2 top-40 w-30">
+            <FontAwesomeIcon icon={faFrown} size='3x'/>
+            <h2 className="text-gray-500 font-medium font-nunito text-2xl">Unable to load.</h2>
+          </div>
+        }
+        else if (error) {
             return <h1>{error.message}</h1>;
         } else if (!isLoaded) {
             return <div className="absolute left-2/4 -translate-x-1/2 top-40 w-30"><img className="w-full" src={loadingGif} alt="" /></div>
-        } else {
+        } 
+        else if (Online) {
         // console.log("items:", setQuizItems)
     
         const setQuizItems = items[0].flashcards.map((item, index) => {
