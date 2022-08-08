@@ -77,8 +77,8 @@ export default function Flashcard() {
         window.addEventListener('online', () => console.log('online'))
 window.addEventListener('offline', () => console.log('offline'))
 
-        console.log("is loading:", isOnline())
-        console.log("Online:", window.navigator.onLine)
+        // console.log("is loading:", isOnline())
+        // console.log("Online:", window.navigator.onLine)
         if (!isOnline()) {
           return <div className=" text-orange-500 flex flex-col gap-3 items-center absolute left-2/4 -translate-x-1/2 top-40 w-30">
             <FontAwesomeIcon icon={faFrown} size='3x'/>
@@ -136,16 +136,16 @@ window.addEventListener('offline', () => console.log('offline'))
 
         
          function setShowItem(event){
-          console.log("clicked", event.target.getAttribute('name'))
+          // console.log("clicked", event.target.getAttribute('name'))
           
             if(event.target.getAttribute('name')==="next") {
-              console.log('next')
+              // console.log('next')
               if(count===setQuizItems.length-1){
                 setCount(0)
               }
               else setCount(prev => prev+1)}
             else if(event.target.getAttribute('name')==="prev") {
-              console.log("prev")
+              // console.log("prev")
               if(count===0) setCount(setQuizItems.length-1)
               else setCount(prev => prev-1)}
           

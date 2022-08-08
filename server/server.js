@@ -1,13 +1,36 @@
 const { response } = require("express");
 const express = require("express");
 const cors = require("cors");
+const dotenv = require("dotenv");
 const Items = require("./config");
+const connectDB = require("./config/db");
 const app = express();
+const path = require("path");
+
+connectDB();
 
 app.use(express.json());
 app.use(cors());
 
 app.listen(3005, () => console.log("app running port 3005"));
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+dotenv.config({ path: "./config/config.env" });
+
+const Comment = require("../server/modules/Comment");
+
+app.post("/comment", async (req, res) => {
+  try {
+    await Comment.create(req.body);
+    console.log("request:", req.body);
+    res.send({ msg: "Comment submitted" });
+  } catch (err) {
+    console.error(err);
+    res.send({ msg: err });
+  }
+});
 
 app.post("/create_flashcard", async (req, res) => {
   const data = req.body;
