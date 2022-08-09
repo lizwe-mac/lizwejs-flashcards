@@ -10,6 +10,7 @@ import { faArrowCircleRight} from '@fortawesome/free-solid-svg-icons'
 import { faFrown} from '@fortawesome/free-solid-svg-icons'
 import {Online, Offline} from 'react-detect-offline'
 import { useOnlineStatus } from "../context/UseOnlineStatus";
+import ShowComments from "./ShowComments";
 
 export default function Flashcard() {
   //Show and hide button
@@ -119,6 +120,7 @@ window.addEventListener('offline', () => console.log('offline'))
         <Comments id={index} item={item}/>
     
     </div>
+    <ShowComments/>
       
     {/* <div className="nav-buttons">
     <div name="prev" className="prev-button text-gray-300 border-orange-500 hover:text-orange-500" onClick={setShowItem}><FontAwesomeIcon name="prev" className="w-full bg-none" icon={faArrowCircleRight} size="3x"/> </div>

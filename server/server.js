@@ -24,11 +24,22 @@ const Comment = require("../server/modules/Comment");
 app.post("/comment", async (req, res) => {
   try {
     await Comment.create(req.body);
-    console.log("request:", req.body);
+    // console.log("request:", req.body);
     res.send({ msg: "Comment submitted" });
   } catch (err) {
     console.error(err);
     res.send({ msg: err });
+  }
+});
+
+app.get("/get-comments", async (req, res) => {
+  try {
+    const getComments = await Comment.find();
+    console.log(getComments);
+    res.send(getComments);
+  } catch (err) {
+    console.log(err);
+    res.send({ error: err });
   }
 });
 
