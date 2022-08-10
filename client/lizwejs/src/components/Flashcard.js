@@ -120,7 +120,7 @@ window.addEventListener('offline', () => console.log('offline'))
         <Comments id={index} item={item}/>
     
     </div>
-    <ShowComments/>
+    <ShowComments id={index} item={item}/>
       
     {/* <div className="nav-buttons">
     <div name="prev" className="prev-button text-gray-300 border-orange-500 hover:text-orange-500" onClick={setShowItem}><FontAwesomeIcon name="prev" className="w-full bg-none" icon={faArrowCircleRight} size="3x"/> </div>
